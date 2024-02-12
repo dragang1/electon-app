@@ -10,7 +10,9 @@ function NavbarComponent() {
     return (
         <div className=' bg-mainBlue py-[10px] xl:py-[0px]  lg:h-[100px] flex items-center'>
             <div className='container mx-auto lg:flex-row flex justify-between items-center flex-col gap-[15px]'>
-                <img src={logo} alt='eledzronLogo' />
+                <Link to={'/'}>
+                    <img src={logo} alt='eledzronLogo' />
+                </Link>
 
                 {/* TODO: search component */}
                 <div className='bg-textWhite rounded-[20px] flex'>
