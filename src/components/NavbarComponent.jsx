@@ -4,9 +4,12 @@ import logo from '../assets/eledzron.png';
 // icons
 import { CiUser, CiHeart, CiShoppingCart } from 'react-icons/ci';
 import { SignedOut, SignInButton, SignedIn, SignOutButton, UserButton } from '@clerk/clerk-react';
+import { useSelector } from 'react-redux';
 
 
 function NavbarComponent() {
+    const { totalProduct } = useSelector(state => state.cartStore);
+    console.log(totalProduct)
     return (
         <div className=' bg-mainBlue py-[10px] xl:py-[0px]  lg:h-[100px] flex items-center'>
             <div className='container mx-auto lg:flex-row flex justify-between items-center flex-col gap-[15px]'>
@@ -56,10 +59,10 @@ function NavbarComponent() {
                         <div className='flex items-center'>
                             <CiShoppingCart size={30} />
                             <span className='bg-mainOrange rounded-[50%] w-[25px] h-[25px] items-center justify-center flex '>
-                                0
+                                {totalProduct}
                             </span>
                         </div>
-                        <Link to='/'>Cart</Link>
+                        <Link to='/cartProducts'>Cart</Link>
                     </div>
                 </div>
             </div>

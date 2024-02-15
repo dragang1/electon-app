@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 function CardProductComponent({ item }) {
     return (
+
+
         <div className='w-[300px] h-full border border-mainBlue rounded-[20px] flex flex-col  text-center gap-[15px]' >
             <div className='relative'>
                 <img src={item.thumbnail} alt={item.title} className='w-full h-[150px] object-cover rounded-t-[20px]' />
@@ -17,6 +19,7 @@ function CardProductComponent({ item }) {
             </div>
             <Link to={`productDetails/${item.id}`}>View detail...</Link>
         </div>
+
     )
 }
 
