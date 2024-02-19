@@ -29,12 +29,12 @@ function CartProducts() {
                     {/* body/content of items */}
                     <div className='flex flex-col gap-4'>
                         {cart.map((item, index) => {
-                            return <CartItemsComponent item={item} key={index} />;
+                            return <CartItemsComponent item={item} key={index} index={index} />;
                         })}
                     </div>
                 </div>
                 {/* right side */}
-                <div className='w-full lg:w-[30%] border border-mainBlue flex flex-col gap-3 px-[10px] sticky top-0'>
+                <div className='w-full lg:w-[30%] border border-mainBlue flex flex-col gap-3  sticky top-0  rounded-lg'>
                     {/* heading/title */}
                     <div className='h-[60px] bg-[#E2F4FF] flex items-center justify-center'>
                         <h2 className='text-center font-medium text-[20px] '>
@@ -42,40 +42,44 @@ function CartProducts() {
                         </h2>
                     </div>
                     {/* content */}
-                    <div className='flex items-center justify-between my-[15px]  border-b border-textColor'>
-                        <p className='text-[20px] font-medium text-mainBlue'>
-                            Subtotal
-                        </p>
-                        <span className='text-[20px]'>${totalPrice}</span>
-                    </div>
-                    {/* discount */}
-                    <div className=''>
-                        <p className='text-[14px] text-slate-500'>
-                            Take your discount 50%
-                        </p>
-                        <div className='border border-slate-500 rounded-full flex items-center justify-center w-full'>
-                            <input
-                                type='text'
-                                placeholder='Insert your coupon'
-                                className='px-[8px] py-[4px] rounded-full outline-none w-full'
-                            />
-                            <button className=' px-[8px] py-[4px] rounded-full text-mainBlue mr-[5px]'>
-                                Apply
-                            </button>
+                    <div className='px-[20px] flex flex-col gap-[20px]'>
+                        <div className='flex items-center justify-between my-[15px]  border-b border-textColor'>
+                            <p className='text-[20px] font-medium text-mainBlue'>
+                                Subtotal
+                            </p>
+                            <span className='text-[20px]'>${totalPrice}</span>
                         </div>
-                    </div>
-                    {/* country */}
-                    <div className=''>
-                        <select className='w-full px-[8px] py-[4px] border border-slate-500 rounded-full bg-textWhite '>
-                            {country.map((el, index) => {
-                                return <option key={index}>{el.name}</option>;
-                            })}
-                        </select>
+                        {/* discount */}
+                        <div className=''>
+                            <p className='text-[14px] text-slate-500'>
+                                Take your discount 50%
+                            </p>
+                            <div className='border border-slate-500 rounded-full flex items-center justify-center w-full'>
+                                <input
+                                    type='text'
+                                    placeholder='Insert your coupon'
+                                    className='px-[8px] py-[4px] rounded-full outline-none w-full'
+                                />
+                                <button className=' px-[8px] py-[4px] rounded-full text-mainBlue mr-[5px]'>
+                                    Apply
+                                </button>
+                            </div>
+                        </div>
+                        {/* country */}
+                        <div className=''>
+                            <select className='w-full px-[8px] py-[4px] border border-slate-500 rounded-full bg-textWhite '>
+                                {country.map((el, index) => {
+                                    return <option key={index}>{el.name}</option>;
+                                })}
+                            </select>
+                        </div>
+
+                        <button className='bg-mainOrange text-textWhite px-[16px] py-[8px] rounded-full'>
+                            Proceed to Checkout
+                        </button>
+
                     </div>
 
-                    <button className='bg-mainOrange text-textWhite px-[16px] py-[8px] rounded-full'>
-                        Proceed to Checkout
-                    </button>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ import { Rating } from '@mui/material';
 import { CiHeart } from 'react-icons/ci';
 import ButtonComponent from '../components/ButtonComponent';
 import { useDispatch } from 'react-redux';
-import { saveCartHandler } from '../store/cartSlice';
+import { saveCartHandler, setPriceHandler } from '../store/cartSlice';
 function ProductDetailsPage() {
     const [currentImage, setCurrentImage] = useState(0)
     const [singleProduct, setSingleProduct] = useState({});
@@ -28,6 +28,9 @@ function ProductDetailsPage() {
 
     function handleProduct() {
         dispatch(saveCartHandler(singleProduct));
+
+
+
     }
 
     return (
