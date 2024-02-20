@@ -10,6 +10,7 @@ import { FaList } from 'react-icons/fa';
 import { IoGridOutline } from 'react-icons/io5';
 import GridViewComponent from "../components/GridViewComponent";
 import ListViewComponent from "../components/ListViewComponent";
+import { motion } from 'framer-motion';
 
 
 function HomePage() {
@@ -25,9 +26,32 @@ function HomePage() {
 
     }, [])
 
+    const fadeFromLeftSide = {
+        initial: {
+            opacity: 0,
+            x: -100,
+        },
+        animate: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                delay: 0.1,
+                duration: 1,
+            },
+        },
+    }
+
     return (
 
-        <div className="container mx auto" >
+        <motion.div
+            variants={fadeFromLeftSide}
+            initial='initial'
+            whileInView='animate'
+            viewport={{
+                once: true,
+            }}
+            className="container mx auto"
+        >
             <div className='flex items-center justify-end gap-5 mt-[20px] cursor-pointer'>
                 <FaList
                     size={30}
@@ -45,26 +69,37 @@ function HomePage() {
 
             {/* {Our products/card} */}
 
-            <div className={activeView === 'gridView'
-                ? 'flex flex-wrap gap-8 items-center justify-center mt-[50px]'
-                : 'flex flex-col px-[20px]'
+            <div
+                className={activeView === 'gridView'
+                    ? 'flex flex-wrap gap-8 items-center justify-center mt-[50px]'
+                    : 'flex flex-col px-[20px]'}
 
-            }>
+            >
 
                 {allProducts.map((item, index) => {
 
                     return (
                         <>
                             {
-                                activeView === 'gridView' ? <GridViewComponent key={item.id} item={item} />
-                                    : <ListViewComponent key={item.id} item={item} />
+                                activeView === 'gridView' ?
+                                    <GridViewComponent
+                                        key={item.id}
+                                        item={item}
+
+                                    />
+                                    :
+                                    <ListViewComponent
+                                        key={item.id}
+                                        item={item}
+
+                                    />
 
                             }
                         </>
                     );
                 })}
             </div>
-        </div >
+        </motion.div >
 
 
     )

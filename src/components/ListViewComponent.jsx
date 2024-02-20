@@ -1,6 +1,7 @@
 import React from 'react'
 import { Rating } from '@mui/material'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion';
 
 
 
@@ -8,7 +9,11 @@ function ListViewComponent({ item }) {
 
 
     return (
-        <div className='w-full mt-[40px] flex items-center justify-between bg-slate-200 rounded-[20px] pr-[20px]' >
+        <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 1.1 }}
+            className='w-full mt-[40px] flex items-center justify-between bg-slate-200 rounded-[20px] pr-[20px]'
+        >
             <div className='relative'>
                 <img src={item.thumbnail} alt={item.title}
                     className='w-[200px] h-[200px] object-cover rounded-t-[10px]' />
@@ -23,7 +28,7 @@ function ListViewComponent({ item }) {
             <Link to={`productDetails/${item.id}`}
                 className='bg-mainOrange text-textWhite px-[12px] py-[6px] rounded-md cursor-pointer hover:bg-mainBlue '
             >View detail...</Link>
-        </div >
+        </motion.div >
 
 
     )

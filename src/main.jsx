@@ -15,6 +15,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import { Provider } from 'react-redux'
 import ProductDetailsPage from './pages/ProductDetailsPage.jsx'
 import CartProducts from './pages/CartProducts.jsx'
+import FavoritesPage from './pages/FavoritesPage.jsx'
 
 
 
@@ -48,7 +49,12 @@ const router = createBrowserRouter([
       {
         path: "/cartProducts",
         element: <CartProducts />
+      },
+      {
+        path: "/favorites",
+        element: <FavoritesPage />
       }
+
 
     ]
   }
