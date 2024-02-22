@@ -16,6 +16,8 @@ import { Provider } from 'react-redux'
 import ProductDetailsPage from './pages/ProductDetailsPage.jsx'
 import CartProducts from './pages/CartProducts.jsx'
 import FavoritesPage from './pages/FavoritesPage.jsx'
+import ProductsPage from './pages/ProductsCategoryPage.jsx'
+import ProductsCategoryPage from './pages/ProductsCategoryPage.jsx'
 
 
 
@@ -53,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/favorites",
         element: <FavoritesPage />
+      },
+      {
+        path: "/products",
+        element: <ProductsCategoryPage />
       }
 
 

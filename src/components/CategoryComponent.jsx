@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import ProductsService from '../services/productService';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductCategory } from '../store/productSlice';
+import { Link } from 'react-router-dom';
 
 function CategoryComponent() {
     const [category, setCategory] = useState([])
     const [isActive, setIsActive] = useState(false);
+
+    const { currentCategory } = useSelector(state => state.productStore)
+    const dispatch = useDispatch();
 
     useEffect(() => {
         ProductsService.getAllCaterory()
@@ -11,6 +17,12 @@ function CategoryComponent() {
             .catch(err => console.error(err))
 
     }, []);
+
+
+    function handleCategory(item) {
+        dispatch(getProductCategory(item));
+        setIsActive(!isActive);
+    }
     return (
         <>
 
@@ -20,19 +32,30 @@ function CategoryComponent() {
 
                         onClick={() => { setIsActive(!isActive) }}
                     >{isActive ? "Hide Category" : "Show Category"}</button>
+
+
                     <ul className='grid grid-cols-1 xl:grid-cols-4 place-items-center  md:grid-cols-3 lg:grid-cols-5 gap-2 w-[100%]'>
+
                         {isActive ?
+
+
 
                             category.map((cat, index) => {
                                 return (
-                                    <li
-                                        className='bg-mainBlue px-[16px] py-[8px] w-[250px]  hover:bg-mainOrange rounded-lg text-textWhite hover:text-[#fff] text-center cursor-pointer transition-all'
+                                    <Link to={'products'} key={index}>
+                                        <li
+                                            style={{ backgroundColor: currentCategory === cat ? "#EDA415" : null }
+                                            }
+                                            className='bg-mainBlue px-[16px] py-[8px] w-[250px]  hover:bg-mainOrange rounded-lg text-textWhite hover:text-[#fff] text-center cursor-pointer transition-all'
 
-                                        key={index}
-                                    >{cat}
-                                    </li>
+                                            onClick={() => handleCategory(cat)}
+                                        > {cat}
+
+                                        </li>
+                                    </Link>
                                 );
                             })
+
 
                             : null}
 
@@ -40,7 +63,7 @@ function CategoryComponent() {
 
 
 
-                </div>
+                </div >
             </div >
         </>
 

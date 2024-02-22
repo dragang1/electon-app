@@ -13,14 +13,14 @@ import ListViewComponent from "../components/ListViewComponent";
 import { motion } from 'framer-motion';
 
 
-function HomePage() {
+function ProductsCategoryPage() {
     const [activeView, setActiveView] = useState('gridView');
 
     const dispatch = useDispatch();
     const { allProducts, currentCategory } = useSelector((state) => state.productStore);
 
     useEffect(() => {
-        ProductsService.getAllProducts(currentCategory)
+        ProductsService.getProductsByCategory(currentCategory)
             .then(res => dispatch(getProductHandler(res.data.products)))
             .catch(err => console.log(err));
 
@@ -99,8 +99,7 @@ function HomePage() {
             </div>
         </motion.div >
 
-
     )
-}
 
-export default HomePage
+}
+export default ProductsCategoryPage;

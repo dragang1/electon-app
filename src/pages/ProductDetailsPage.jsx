@@ -92,11 +92,10 @@ function ProductDetailsPage() {
     return (
         <>
             {isLoading && (
-                <div className='container mx-auto'>
+                <div className='container mx-auto mb-[50px]'>
                     <div className='flex mt-[50px] flex-col items-center justify-center gap-[30px] lg:gap-[10px] lg:flex-row'>
                         {/* left side images */}
                         <motion.div
-
                             variants={fadeFromLeftSide}
                             initial='initial'
                             whileInView='animate'

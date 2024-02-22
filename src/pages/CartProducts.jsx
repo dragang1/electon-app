@@ -1,13 +1,23 @@
-import React from 'react'
+import { useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import CartItemsComponent from '../components/CartItemsComponent';
 import country from "../constants/country"
 
 function CartProducts() {
+    const [currentCoupon, setCurrentCoupon] = useState();
+
     const { cart, totalPrice } = useSelector(state => state.cartStore);
 
+    const coupon = useRef();
+
+    function handleCoupon() {
+        setCurrentCoupon(coupon.current.value);
+
+        coupon.current.value = '';
+    }
+
     return (
-        <div className='mt-[20px] lg:mt-[50px]'>
+        <div className='mt-[20px] lg:mt-[50px] mb-[50px]'>
             <div className='container mx-auto flex flex-col lg:flex-row gap-5'>
                 {/* left side */}
                 <div className='w-full lg:w-[70%]'>
@@ -47,7 +57,9 @@ function CartProducts() {
                             <p className='text-[20px] font-medium text-mainBlue'>
                                 Subtotal
                             </p>
-                            <span className='text-[20px]'>${totalPrice}</span>
+                            <span className='text-[20px]'>${
+                                currentCoupon === 'alphaCode' ? totalPrice / 2 : totalPrice
+                            }</span>
                         </div>
                         {/* discount */}
                         <div className=''>
@@ -56,17 +68,21 @@ function CartProducts() {
                             </p>
                             <div className='border border-slate-500 rounded-full flex items-center justify-center w-full'>
                                 <input
+                                    ref={coupon}
                                     type='text'
                                     placeholder='Insert your coupon'
                                     className='px-[8px] py-[4px] rounded-full outline-none w-full'
                                 />
-                                <button className=' px-[8px] py-[4px] rounded-full text-mainBlue mr-[5px]'>
+                                <button className=' px-[8px] py-[4px] rounded-full text-mainBlue mr-[5px]'
+                                    onClick={() => handleCoupon()}
+
+                                >
                                     Apply
                                 </button>
                             </div>
                         </div>
                         {/* country */}
-                        <div className=''>
+                        <div >
                             <select className='w-full px-[8px] py-[4px] border border-slate-500 rounded-full bg-textWhite '>
                                 {country.map((el, index) => {
                                     return <option key={index}>{el.name}</option>;

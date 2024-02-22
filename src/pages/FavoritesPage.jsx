@@ -37,7 +37,7 @@ function FavoritesPage() {
             viewport={{
                 once: true,
             }}
-            className='container mx-auto flex flex-wrap gap-8 items-center justify-center mt-[50px] '>
+            className='container mx-auto flex flex-wrap gap-8 items-center justify-center mt-[50px] mb-[50px] '>
             {favoriteItems.map((item, index) => {
 
                 return (
