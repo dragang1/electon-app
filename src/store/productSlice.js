@@ -4,7 +4,8 @@ const productSlice = createSlice({
     name: "product",
     initialState: {
         allProducts: [],
-        currentCategory: "All Products"
+        currentCategory: "All Products",
+        currentSearch: "",
     },
     reducers: {
         getProductHandler: (state, action) => {
@@ -14,10 +15,15 @@ const productSlice = createSlice({
         getProductCategory: (state, action) => {
             state.currentCategory = action.payload;
 
-        }
+        },
+
+        getSearchProductHandler: (state, action) => {
+
+            state.currentSearch = action.payload;
+        },
     }
 
 })
 
-export const { getProductHandler, getProductCategory } = productSlice.actions;
+export const { getProductHandler, getProductCategory, getSearchProductHandler } = productSlice.actions;
 export default productSlice.reducer;

@@ -17,14 +17,23 @@ function HomePage() {
     const [activeView, setActiveView] = useState('gridView');
 
     const dispatch = useDispatch();
-    const { allProducts, currentCategory } = useSelector((state) => state.productStore);
+    const { allProducts, currentCategory, currentSearch } = useSelector((state) => state.productStore);
 
     useEffect(() => {
         ProductsService.getAllProducts(currentCategory)
             .then(res => dispatch(getProductHandler(res.data.products)))
             .catch(err => console.log(err));
-
     }, [currentCategory])
+
+
+    useEffect(() => {
+        ProductsService.getProductBySearch(currentSearch)
+            .then(res => dispatch(getProductHandler(res.data.products)))
+            .catch(err => console.log(err));
+    }, [currentSearch])
+
+
+
 
     const fadeFromLeftSide = {
         initial: {
@@ -50,7 +59,7 @@ function HomePage() {
             viewport={{
                 once: true,
             }}
-            className="container mx auto mb-[50px]"
+            className="container mx-auto mb-[50px]"
         >
             <div className='flex items-center justify-end gap-5 mt-[20px] cursor-pointer'>
                 <FaList

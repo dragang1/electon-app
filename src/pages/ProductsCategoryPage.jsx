@@ -50,7 +50,7 @@ function ProductsCategoryPage() {
             viewport={{
                 once: true,
             }}
-            className="container mx auto mb-[50px]"
+            className="container mx-auto mb-[50px]"
         >
             <div className='flex items-center justify-end gap-5 mt-[20px] cursor-pointer'>
                 <FaList
