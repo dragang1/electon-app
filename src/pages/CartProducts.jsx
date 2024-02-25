@@ -17,7 +17,7 @@ function CartProducts() {
     }
 
     return (
-        <div className='mt-[20px] lg:mt-[50px] mb-[50px]'>
+        <div className='mt-[20px] lg:mt-[50px] mb-[50px] px-[20px]'>
             <div className='container mx-auto flex flex-col lg:flex-row gap-5'>
                 {/* left side */}
                 <div className='w-full lg:w-[70%]'>
@@ -90,7 +90,7 @@ function CartProducts() {
                             </select>
                         </div>
 
-                        <button className='bg-mainOrange text-textWhite px-[16px] py-[8px] rounded-full'>
+                        <button className='bg-mainOrange text-textWhite px-[16px] py-[8px] rounded-full mb-[30px]'>
                             Proceed to Checkout
                         </button>
 

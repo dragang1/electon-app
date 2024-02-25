@@ -32,7 +32,7 @@ function FooterComponent() {
                     </div>
 
                     {/* right side */}
-                    <div className='flex items-start gap-[30px] w-full md:w-[80%] justify-between px-[20px]'>
+                    <div className='flex items-start gap-[30px] w-full md:w-[80%] justify-between px-[20px] text-[12px]'>
                         <FooterListComponent
                             title='Find Products'
                             items={footerContent}
