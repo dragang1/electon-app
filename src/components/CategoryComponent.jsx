@@ -12,7 +12,7 @@ function CategoryComponent() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        ProductsService.getAllCaterory()
+        ProductsService.getAllCategory()
             .then(res => setCategory(res.data))
             .catch(err => console.error(err))
 
@@ -20,7 +20,8 @@ function CategoryComponent() {
 
 
     function handleCategory(item) {
-        dispatch(getProductCategory(item));
+        dispatch(getProductCategory(item.slug));
+
         setIsActive(!isActive);
     }
     return (
@@ -42,15 +43,15 @@ function CategoryComponent() {
 
                             category.map((cat, index) => {
                                 return (
-                                    <Link to={'products'} key={index}>
+                                    <Link to={`/products/category/${cat.slug}`} key={index}>
                                         <li
-                                            style={{ backgroundColor: currentCategory === cat ? "#EDA415" : null }
+                                            style={{ backgroundColor: currentCategory === cat.slug ? "#EDA415" : null }
                                             }
                                             className='bg-mainBlue px-[16px] py-[8px] w-[250px]  hover:bg-mainOrange rounded-lg text-textWhite hover:text-[#fff] text-center cursor-pointer transition-all'
 
                                             onClick={() => handleCategory(cat)}
-                                        > {cat}
-
+                                        >
+                                            {cat.name}
                                         </li>
                                     </Link>
                                 );

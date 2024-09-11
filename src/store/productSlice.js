@@ -15,6 +15,7 @@ const productSlice = createSlice({
         getProductCategory: (state, action) => {
             state.currentCategory = action.payload;
 
+
         },
 
         getSearchProductHandler: (state, action) => {

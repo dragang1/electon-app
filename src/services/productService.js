@@ -5,7 +5,7 @@ class ProductsService {
     static getProductBySearch = (search) => axios.get(`https://dummyjson.com/products/search?q=${search}`)
 
     static getProductsByCategory = (category) => axios.get(`/products/category/${category}`)
-    static getAllCaterory = () => axios.get('/products/categories')
+    static getAllCategory = () => axios.get('/products/categories')
     static getSingleProduct = (id) => axios.get(`/products/${id}`)
 }
 
